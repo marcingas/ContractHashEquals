@@ -20,7 +20,7 @@ public class Person {
             return false;
         }
 
-        return this.age == person.age && this.name.equals(person.name) && this.hairColor.equals(person.hairColor);
+        return age == person.age && name.equals(person.name) && hairColor.equals(person.hairColor);
     }
 
 
