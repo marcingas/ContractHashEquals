@@ -48,51 +48,34 @@ public class MacaronRunner {
         System.out.println("Macrons counter with List: ");
         macaronsCounter(macarons);
 
-        Map<Integer,Macaron>macaronsMap = new HashMap<>();
-        macaronsMap.put(1,yellow1);
-        macaronsMap.put(2,yellow2);
-        macaronsMap.put(3,yellow3);
-        macaronsMap.put(4,green1);
-        macaronsMap.put(5,green2);
-        macaronsMap.put(6,pink1);
-        macaronsMap.put(7,pink2);
-        macaronsMap.put(8,pink3);
-        macaronsMap.put(9,white1);
-        macaronsMap.put(10,white2);
-        System.out.println("Map Size: " + macaronsMap.size());
+        Map<String,Integer>macaronsNumber = new HashMap<>();
+
 
         System.out.println("\nMacrons counter with Map: ");
-        macronMapCounter(macaronsMap);
+        macronMapCounter(macarons,macaronsNumber);
 
 
     }
 
-    private static void macronMapCounter(Map<Integer, Macaron> macaronsMap) {
-        int countMapYellow = 0;
-        int countMapGreen = 0;
-        int countMapPink = 0;
-        int countMapWhite = 0;
+    private static void macronMapCounter(List<Macaron> macarons, Map<String, Integer>macaronsNumber) {
 
-        for(Map.Entry<Integer,Macaron> macMap : macaronsMap.entrySet()){
-            Integer key = macMap.getKey();
-            Macaron macaron = macMap.getValue();
-            if(macaron.getColor().equals("Yellow")){
-                countMapYellow++;
-            }
-            if(macaron.getColor().equals("Green")){
-                countMapGreen++;
-            }
-            if(macaron.getColor().equals("Pink")){
-                countMapPink++;
-            }
-            if(macaron.getColor().equals("White")){
-                countMapWhite++;
-            }
+        for(Macaron macaron : macarons ){
+           String key = macaron.getColor();
+           Integer value = macaronsNumber.get(key);
+           if(macaronsNumber.containsKey(key)){
+               macaronsNumber.put(key,value + 1);
+           }else {
+               macaronsNumber.put(key,1);
+           }
+
         }
-        System.out.println("Yellow -" + countMapYellow);
-        System.out.println("Green-" + countMapGreen);
-        System.out.println("White -" + countMapWhite);
-        System.out.println("Pink -" + countMapPink);
+
+        System.out.println("Number of color makarons:");
+        for(Map.Entry<String,Integer> entry : macaronsNumber.entrySet()){
+            String key = entry.getKey();
+            Integer value = entry.getValue();
+            System.out.println(key + " occurs: " + value + " times");
+        }
     }
 
     private static void macaronsCounter(List<Macaron> macarons) {
