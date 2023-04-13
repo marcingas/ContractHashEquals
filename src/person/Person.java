@@ -1,3 +1,5 @@
+package person;
+
 import java.util.Objects;
 
 public class Person {
@@ -31,7 +33,7 @@ public class Person {
 
     @Override
     public String toString() {
-        return "Person{" +
+        return "person.Person{" +
                 "name='" + name + '\'' +
                 ", hairColor='" + hairColor + '\'' +
                 ", age=" + age +

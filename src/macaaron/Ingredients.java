@@ -1,3 +1,5 @@
+package macaaron;
+
 import java.util.Objects;
 
 public class Ingredients {
@@ -23,7 +25,7 @@ public class Ingredients {
 
     @Override
     public String toString() {
-        return "Ingredients:" +
+        return "macaaron.Ingredients:" +
                 "sugar=" + sugar +
                 ", toppingColor=" + toppingColor + '\'';
     }

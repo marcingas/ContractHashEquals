@@ -1,3 +1,8 @@
+package macaaron;
+
+import macaaron.Ingredients;
+import macaaron.Macaron;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -38,7 +43,7 @@ public class MacaronRunner {
         System.out.println(yellow2.equals(yellow2));
         System.out.println(yellow3.equals(yellow1));
         System.out.println(pink1.equals(yellow2));
-// Jeśli nie nadpiszemy equals and hashCode w Ingredients to będzie false.
+// Jeśli nie nadpiszemy equals and hashCode w macaaron.Ingredients to będzie false.
 
         System.out.println("Macrons counter with List: ");
         macaronsCounter(macarons);

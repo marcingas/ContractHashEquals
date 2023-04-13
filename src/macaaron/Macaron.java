@@ -1,3 +1,5 @@
+package macaaron;
+
 import java.util.Objects;
 
 public class Macaron {
@@ -35,7 +37,7 @@ public class Macaron {
 
     @Override
     public String toString() {
-        return "Macaron{" +
+        return "macaaron.Macaron{" +
                 "color='" + color + '\'' +
                 topping;
     }
