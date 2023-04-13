@@ -14,17 +14,15 @@ public class Person {
     }
 
     @Override
-    public boolean equals(Object o){
-        if(this == o){
+    public boolean equals(Object o) {
+        if (this == o) {
             return true;
         }
-        if(!(o instanceof Person person)){
+        if (!(o instanceof Person person)) {
             return false;
         }
-
         return age == person.age && name.equals(person.name) && hairColor.equals(person.hairColor);
     }
-
 
     @Override
     public int hashCode() {

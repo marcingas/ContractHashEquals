@@ -48,30 +48,25 @@ public class MacaronRunner {
         System.out.println("Macrons counter with List: ");
         macaronsCounter(macarons);
 
-        Map<String,Integer>macaronsNumber = new HashMap<>();
-
+        Map<String, Integer> macaronsNumber = new HashMap<>();
 
         System.out.println("\nMacrons counter with Map: ");
-        macronMapCounter(macarons,macaronsNumber);
-
-
+        macronMapCounter(macarons, macaronsNumber);
     }
 
-    private static void macronMapCounter(List<Macaron> macarons, Map<String, Integer>macaronsNumber) {
-
-        for(Macaron macaron : macarons ){
-           String key = macaron.getColor();
-           Integer value = macaronsNumber.get(key);
-           if(macaronsNumber.containsKey(key)){
-               macaronsNumber.put(key,value + 1);
-           }else {
-               macaronsNumber.put(key,1);
-           }
-
+    private static void macronMapCounter(List<Macaron> macarons, Map<String, Integer> macaronsNumber) {
+        for (Macaron macaron : macarons) {
+            String key = macaron.getColor();
+            Integer value = macaronsNumber.get(key);
+            if (macaronsNumber.containsKey(key)) {
+                macaronsNumber.put(key, value + 1);
+            } else {
+                macaronsNumber.put(key, 1);
+            }
         }
 
         System.out.println("Number of color makarons:");
-        for(Map.Entry<String,Integer> entry : macaronsNumber.entrySet()){
+        for (Map.Entry<String, Integer> entry : macaronsNumber.entrySet()) {
             String key = entry.getKey();
             Integer value = entry.getValue();
             System.out.println(key + " occurs: " + value + " times");
@@ -83,17 +78,17 @@ public class MacaronRunner {
         int countGreen = 0;
         int countPink = 0;
         int countWhite = 0;
-        for(Macaron mac : macarons){
-            if(mac.getColor() == "Yellow"){
+        for (Macaron mac : macarons) {
+            if (mac.getColor() == "Yellow") {
                 countYellow++;
             }
-            if(mac.getColor() == "Pink"){
+            if (mac.getColor() == "Pink") {
                 countPink++;
             }
-            if(mac.getColor() == "White"){
+            if (mac.getColor() == "White") {
                 countWhite++;
             }
-            if(mac.getColor() == "Green"){
+            if (mac.getColor() == "Green") {
                 countGreen++;
             }
         }
