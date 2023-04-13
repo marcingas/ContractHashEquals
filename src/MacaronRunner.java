@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -39,10 +40,54 @@ public class MacaronRunner {
         System.out.println(pink1.equals(yellow2));
 // Jeśli nie nadpiszemy equals and hashCode w Ingredients to będzie false.
 
+        System.out.println("Macrons counter with List: ");
         macaronsCounter(macarons);
 
+        Map<Integer,Macaron>macaronsMap = new HashMap<>();
+        macaronsMap.put(1,yellow1);
+        macaronsMap.put(2,yellow2);
+        macaronsMap.put(3,yellow3);
+        macaronsMap.put(4,green1);
+        macaronsMap.put(5,green2);
+        macaronsMap.put(6,pink1);
+        macaronsMap.put(7,pink2);
+        macaronsMap.put(8,pink3);
+        macaronsMap.put(9,white1);
+        macaronsMap.put(10,white2);
+        System.out.println("Map Size: " + macaronsMap.size());
+
+        System.out.println("\nMacrons counter with Map: ");
+        macronMapCounter(macaronsMap);
 
 
+    }
+
+    private static void macronMapCounter(Map<Integer, Macaron> macaronsMap) {
+        int countMapYellow = 0;
+        int countMapGreen = 0;
+        int countMapPink = 0;
+        int countMapWhite = 0;
+
+        for(Map.Entry<Integer,Macaron> macMap : macaronsMap.entrySet()){
+            Integer key = macMap.getKey();
+            Macaron macaron = macMap.getValue();
+            if(macaron.getColor().equals("Yellow")){
+                countMapYellow++;
+            }
+            if(macaron.getColor().equals("Green")){
+                countMapGreen++;
+            }
+            if(macaron.getColor().equals("Pink")){
+                countMapPink++;
+            }
+            if(macaron.getColor().equals("White")){
+                countMapWhite++;
+            }
+        }
+        System.out.println("Yellow -" + countMapYellow);
+        System.out.println("Green-" + countMapGreen);
+        System.out.println("White -" + countMapWhite);
+        System.out.println("Pink -" + countMapPink);
     }
 
     private static void macaronsCounter(List<Macaron> macarons) {

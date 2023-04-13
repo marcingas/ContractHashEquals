@@ -30,7 +30,7 @@ public class Macaron {
 
     @Override
     public int hashCode() {
-        return Objects.hash(color) + 25;
+        return Objects.hash(color,topping) + 25;
     }
 
     @Override

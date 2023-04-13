@@ -18,7 +18,7 @@ public class Ingredients {
 
     @Override
     public int hashCode() {
-        return Objects.hash(sugar, toppingColor);
+        return Objects.hash(sugar, toppingColor) + 11;
     }
 
     @Override
