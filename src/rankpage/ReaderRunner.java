@@ -9,61 +9,67 @@ public class ReaderRunner {
 
     public static void main(String[] args) {
         File file = new File("src\\rankpage\\text.txt");
-        List<Fraze> list = new ArrayList<>();
+        List<Phrase> list = new ArrayList<>();
 
-        buildListFromFile(file, list);
+        list = buildListFromFile(file, list);
 
-        Map<Fraze, Integer> wordsCount = new HashMap<>();
+        Map<Phrase, Integer> wordsCount = new HashMap<>();
         String searchWord = "pies";
 
-        buildMapWithSearchWord(list, wordsCount, searchWord);
-        int biggerThen = 0;
+       wordsCount = buildMapWithSearchWord(list, wordsCount, searchWord);
+        int factor = 0;
 //        printMapWithExpectedValues(wordsCount, biggerThen);
 
-        List<Map.Entry<Fraze, Integer>> temporaryList = new LinkedList<>(wordsCount.entrySet());
-        sortMap(temporaryList);
+        List<Map.Entry<Phrase, Integer>> temporaryList = new LinkedList<>(wordsCount.entrySet());
+        Map<Phrase,Integer> finalMap = new HashMap<>();
+       finalMap = sortMap(temporaryList);
+
+        System.out.println(finalMap);
+
     }
 
-    private static void sortMap(List<Map.Entry<Fraze, Integer>> temporaryList) {
-        Collections.sort(temporaryList, new Comparator<Map.Entry<Fraze, Integer>>() {
+    private static Map<Phrase,Integer> sortMap(List<Map.Entry<Phrase, Integer>> temporaryList) {
+        Collections.sort(temporaryList, new Comparator<Map.Entry<Phrase, Integer>>() {
 
             @Override
-            public int compare(Map.Entry<Fraze, Integer> o1, Map.Entry<Fraze, Integer> o2) {
+            public int compare(Map.Entry<Phrase, Integer> o1, Map.Entry<Phrase, Integer> o2) {
                 return ((o2.getValue()).compareTo(o1.getValue()));
             }
         });
 
-        Map<Fraze, Integer> sortedMap = new LinkedHashMap<>();
-        for (Map.Entry<Fraze, Integer> entry : temporaryList) {
+        Map<Phrase, Integer> sortedMap = new LinkedHashMap<>();
+        for (Map.Entry<Phrase, Integer> entry : temporaryList) {
             sortedMap.put(entry.getKey(), entry.getValue());
         }
-        System.out.println(sortedMap);
+//        System.out.println(sortedMap);
+        return sortedMap;
     }
 
-    private static void printMapWithExpectedValues(Map<Fraze, Integer> wordsCount, int biggerThen) {
-        for (Map.Entry<Fraze, Integer> entry : wordsCount.entrySet()) {
-            Fraze key = entry.getKey();
+    private static void printMapWithExpectedValues(Map<Phrase, Integer> wordsCount, int biggerThen) {
+        for (Map.Entry<Phrase, Integer> entry : wordsCount.entrySet()) {
+            Phrase key = entry.getKey();
             int value = entry.getValue();
             if (value > biggerThen)
                 System.out.println(key.toString() + " : " + value);
         }
     }
 
-    private static void buildMapWithSearchWord(List<Fraze> list, Map<Fraze, Integer> wordsCount, String search) {
-        for (Fraze fraze : list) {
-            Fraze key = fraze;
+    private static Map<Phrase,Integer> buildMapWithSearchWord(List<Phrase> list, Map<Phrase, Integer> wordsCount, String search) {
+        for (Phrase phrase : list) {
+            Phrase key = phrase;
             Integer value = 0;
 
-            for (String element : fraze.getFraze()) {
+            for (String element : phrase.getFraze()) {
                 if (element.equals(search)) {
                     value++;
                 }
             }
             wordsCount.put(key, value);
         }
+        return wordsCount;
     }
 
-    private static void buildListFromFile(File file, List<Fraze> list) {
+    private static List<Phrase> buildListFromFile(File file, List<Phrase> list) {
         try {
             Scanner scanner = new Scanner(file);
             while (scanner.hasNextLine()) {
@@ -73,11 +79,12 @@ public class ReaderRunner {
                         .replaceAll(("ś"), "s").replaceAll("ć", "c")
                         .replaceAll("ź", "z").replaceAll("ż", "z").toLowerCase();
                 String[] sentence = line.split(" ");
-                Fraze fraze = new Fraze(sentence);
-                list.add(fraze);
+                Phrase phrase = new Phrase(sentence);
+                list.add(phrase);
             }
         } catch (FileNotFoundException e) {
             System.out.println("Nie znalazłem pliku");
         }
+        return list;
     }
 }

@@ -1,15 +1,12 @@
 package rankpage;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
-import java.util.Objects;
 
-public class Fraze {
+public class Phrase {
 
     private String[]fraze;
 
-    public Fraze(String[] fraze) {
+    public Phrase(String[] fraze) {
         this.fraze = fraze;
     }
 
@@ -20,8 +17,8 @@ public class Fraze {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Fraze fraze1)) return false;
-        return Arrays.equals(getFraze(), fraze1.getFraze());
+        if (!(o instanceof Phrase phrase1)) return false;
+        return Arrays.equals(getFraze(), phrase1.getFraze());
     }
 
     @Override
